@@ -1,10 +1,10 @@
 import Database from 'better-sqlite3'
 
 class SQLiteDatabase {
-  readonly db = new Database('bookmark.db', { verbose: console.log })
+  readonly db = new Database('bookmark.db')
 
   constructor() {
-    console.log('Constructing db')
+    console.log('DB: Constructing database')
     const sql = `CREATE TABLE IF NOT EXISTS bookmarks(
       id INTEGER PRIMARY KEY AUTOINCREMENT, 
       url TEXT
@@ -16,7 +16,7 @@ class SQLiteDatabase {
   addBookmark(url: string) {
     const stmt = this.db.prepare(`INSERT INTO bookmarks (url) VALUES (?)`)
     const info = stmt.run(url)
-    console.log(info.changes)
+    console.log('DB: Add', info.changes)
   }
 
   getBookmarks() {
@@ -28,7 +28,7 @@ class SQLiteDatabase {
   deleteBookmark(id: number) {
     const stmt = this.db.prepare('DELETE FROM bookmarks WHERE id = ?')
     const info = stmt.run(id)
-    console.log(info.changes)
+    console.log('DB: Delete', info.changes)
   }
 
 }

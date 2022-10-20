@@ -15,7 +15,7 @@ export const actions: Actions = {
     const url = data.get('url')?.toString()
 
     if (!url)
-      return invalid(303)
+      return invalid(404, { missing: true} )
 
     db.addBookmark(url)
   }
