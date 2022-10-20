@@ -25,6 +25,12 @@ class SQLiteDatabase {
     return bookmarks
   }
 
+  deleteBookmark(id: number) {
+    const stmt = this.db.prepare('DELETE FROM bookmarks WHERE id = ?')
+    const info = stmt.run(id)
+    console.log(info.changes)
+  }
+
 }
 
 export default new SQLiteDatabase()
