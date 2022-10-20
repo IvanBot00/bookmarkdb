@@ -1,11 +1,13 @@
 <script lang="ts">
   import { enhance } from "$app/forms";
   import type { ActionData, PageData } from "./$types";
+  import Bookmark from '$lib/components/Bookmark.svelte'
 
   export let data: PageData
   export let form: ActionData
 
-  function handleDelete(id: number) {
+  function deleteBookmark(e) {
+    const id = e.detail
     fetch(`/api/bookmark/${id}`, { method: 'DELETE' })
     fetchBookmarks()
   }
@@ -17,18 +19,22 @@
 
 </script>
 
-Bookmarks
-
-<form method="POST" use:enhance>
-  <input name="url" type="text" placeholder="link"/>
-  <button type="submit">Add Bookmark</button>
-</form>
-{#if form?.missing}<div>Please add a url</div>{/if}
-
-{#each data.bookmarks as link}
+<div>
+  Bookmarks
   <div>
-    <a href={link.url}>{link.url}</a>
-    <button on:click={() => handleDelete(link.id)}>Delete bookmark</button>
+    <form method="POST" use:enhance>
+      <input name='title' type='text' placeholder="title" class='input' />
+      <input name="url" type="text" placeholder="link" class='input' />
+      <button class='btn bg-blue-500' type="submit">Add Bookmark</button>
+    </form>
+    {#if form?.missing}<div>Please add a url</div>{/if}  
   </div>
-{/each}
-
+  
+  <ul>
+    {#each data.bookmarks as link}
+      <li>
+        <Bookmark on:delete={deleteBookmark} id={link.id} title={link.title} url={link.url} />
+      </li>
+    {/each}
+  </ul>
+</div>

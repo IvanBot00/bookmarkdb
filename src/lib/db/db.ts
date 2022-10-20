@@ -6,16 +6,17 @@ class SQLiteDatabase {
   constructor() {
     console.log('DB: Constructing database')
     const sql = `CREATE TABLE IF NOT EXISTS bookmarks(
-      id INTEGER PRIMARY KEY AUTOINCREMENT, 
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      title TEXT, 
       url TEXT
       );`
     
     this.db.exec(sql)
   }
 
-  addBookmark(url: string) {
-    const stmt = this.db.prepare(`INSERT INTO bookmarks (url) VALUES (?)`)
-    const info = stmt.run(url)
+  addBookmark(title: string, url: string) {
+    const stmt = this.db.prepare(`INSERT INTO bookmarks (title, url) VALUES (?, ?)`)
+    const info = stmt.run(title, url)
     console.log('DB: Add', info.changes)
   }
 

@@ -12,11 +12,12 @@ export const load: PageServerLoad = () => {
 export const actions: Actions = {
   default: async ({ request }) => {
     const data = await request.formData()
+    const title = data.get('title')?.toString()
     const url = data.get('url')?.toString()
 
-    if (!url)
+    if (!url || !title)
       return invalid(404, { missing: true} )
 
-    db.addBookmark(url)
+    db.addBookmark(title, url)
   }
 }
