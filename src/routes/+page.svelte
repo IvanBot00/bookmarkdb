@@ -39,7 +39,7 @@
   <ul>
     {#each data.bookmarks as link}
       <li>
-        <Bookmark on:delete={deleteBookmark} id={link.id} title={link.title} url={link.url} />
+        <Bookmark on:delete={deleteBookmark} id={link.id} title={link.title} url={link.url} icon={link.icon} />
       </li>
     {/each}
   </ul>

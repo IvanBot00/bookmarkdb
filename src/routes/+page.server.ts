@@ -18,6 +18,14 @@ export const actions: Actions = {
     if (!url || !title)
       return invalid(404, { missing: true} )
 
-    db.addBookmark(title, url)
+    // possibly optimize by checknng for /favicon first, and if fails load page and check for icon
+    // fetch icon
+    // need to improve security of this as well
+    const basePath = url.split('/')
+    const iconPath = 'https://' + basePath[2] + '/favicon.ico'
+    // const icon = await fetch(iconPath).then(res => res.text())
+    // console.log(icon)
+
+    db.addBookmark(title, url, iconPath)
   }
 }

@@ -8,15 +8,16 @@ class SQLiteDatabase {
     const sql = `CREATE TABLE IF NOT EXISTS bookmarks(
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       title TEXT, 
-      url TEXT
+      url TEXT,
+      icon TEXT
       );`
     
     this.db.exec(sql)
   }
 
-  addBookmark(title: string, url: string) {
-    const stmt = this.db.prepare(`INSERT INTO bookmarks (title, url) VALUES (?, ?)`)
-    const info = stmt.run(title, url)
+  addBookmark(title: string, url: string, icon: string) {
+    const stmt = this.db.prepare(`INSERT INTO bookmarks (title, url, icon) VALUES (?, ?, ?)`)
+    const info = stmt.run(title, url, icon)
     console.log('DB: Add', info.changes)
   }
 
