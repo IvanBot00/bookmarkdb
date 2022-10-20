@@ -24,7 +24,6 @@ export const actions: Actions = {
     const basePath = url.split('/')
     const iconPath = 'https://' + basePath[2] + '/favicon.ico'
     // const icon = await fetch(iconPath).then(res => res.text())
-    // console.log(icon)
 
     db.addBookmark(title, url, iconPath)
   }

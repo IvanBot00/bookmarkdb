@@ -4,6 +4,6 @@
 </script>
 
 <div class='flex h-full'>
-  <Sidebar />
+  <!-- <Sidebar /> -->
   <slot />
 </div>
