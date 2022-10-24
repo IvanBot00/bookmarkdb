@@ -1,4 +1,5 @@
 import Database from 'better-sqlite3'
+import type { BookmarkInfo } from '$lib/types'
 
 class SQLiteDatabase {
   readonly db = new Database('bookmark.db')
@@ -8,20 +9,19 @@ class SQLiteDatabase {
     const sql = `CREATE TABLE IF NOT EXISTS bookmarks(
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       title TEXT, 
-      url TEXT,
-      icon TEXT
+      url TEXT
       );`
     
     this.db.exec(sql)
   }
 
-  addBookmark(title: string, url: string, icon: string) {
-    const stmt = this.db.prepare(`INSERT INTO bookmarks (title, url, icon) VALUES (?, ?, ?)`)
-    const info = stmt.run(title, url, icon)
+  addBookmark(title: string, url: string) {
+    const stmt = this.db.prepare(`INSERT INTO bookmarks (title, url) VALUES (?, ?)`)
+    const info = stmt.run(title, url)
     console.log('DB: Add', info.changes)
   }
 
-  getBookmarks() {
+  getBookmarks(): Array<BookmarkInfo> {
     const stmt = this.db.prepare('SELECT * FROM bookmarks')
     const bookmarks = stmt.all()
     return bookmarks
@@ -32,7 +32,6 @@ class SQLiteDatabase {
     const info = stmt.run(id)
     console.log('DB: Delete', info.changes)
   }
-
 }
 
 export default new SQLiteDatabase()
