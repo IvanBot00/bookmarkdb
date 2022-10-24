@@ -52,7 +52,9 @@
       </div>
 
       <div>
-        Edit
+        <a href={`/bookmarks/edit/${id}`}>
+          <i class="fa-solid fa-pen-to-square"></i>
+        </a>
       </div>
 
     </div>
