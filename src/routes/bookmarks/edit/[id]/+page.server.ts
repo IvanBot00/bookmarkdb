@@ -1,4 +1,4 @@
-import { invalid, type Actions } from '@sveltejs/kit'
+import { invalid, redirect, type Actions } from '@sveltejs/kit'
 import type { PageServerLoad } from './$types'
 import db from '$lib/db/db'
 
@@ -24,6 +24,7 @@ export const actions: Actions = {
       return invalid(400, { missing: { url: true } })
 
     db.updateBookmark(id, title, url)
+    throw redirect(303, "/")
   }
 }
 function parseBookmarkForm(form: FormData) {

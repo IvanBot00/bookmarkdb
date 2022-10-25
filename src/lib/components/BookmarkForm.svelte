@@ -15,7 +15,7 @@
       value={title}
       class="input" 
     />
-    {#if form?.missing?.title}<div>Missing title</div>{/if}
+    {#if form?.missing?.title}<div class="text-red-400">Missing title</div>{/if}
   </div>
 
   <div class="form-group">
@@ -27,6 +27,7 @@
       value={url}  
       class="input" 
     />
+    {#if form?.missing?.url}<div class="text-red-400">Missing URL</div>{/if}
   </div>
 
   <div class="w-full mt-2">
