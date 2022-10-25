@@ -2,30 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-    background: #262626;
-    color: white;
-}
-
-html, body, #root {
-    height: 100%;
-}
-
 @layer components {
     .btn {
         @apply py-2 px-4 rounded-lg shadow-md font-semibold;
     }
 
     .btn-primary {
-        @apply bg-indigo-700;
+        @apply bg-blue-700 text-white;
     }
 
     .input {
-        @apply block w-full px-3 py-1.5 text-base font-normal bg-slate-700 border border-solid border-slate-500
-        rounded transition ease-in-out m-0 focus:border-indigo-500 focus:outline-none;
+        @apply block w-full px-3 py-1.5 text-base font-normal bg-zinc-800 border border-solid border-slate-500
+        rounded transition ease-in-out m-0 focus:border-blue-500 focus:outline-none text-white;
     }
 
     .form-group {
-        @apply flex flex-col space-y-1;
+        @apply flex flex-col space-y-1 text-white;
     }
 }

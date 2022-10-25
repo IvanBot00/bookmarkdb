@@ -7,17 +7,9 @@
   export let mode = 'Row'
   export let title = ''
   export let url = ''
-  export let icon = ''
 
   function handleDelete() {
     dispatcher('delete', id)
-  }
-
-  // very naive implementation, improve later
-  function extractBaseDomain(url: string): string {
-    const res = url.split('//')
-    const subdomains = res[1].split('/')
-    return subdomains[0]
   }
 
   function stripHttp(url: string): string {
@@ -27,14 +19,12 @@
 
 </script>
 
-<div class='bg-slate-700 rounded-md p-2'>
+<div class='bg-zinc-800 rounded-md p-2 text-gray-300'>
   {#if mode === 'Row'}
     <div class='flex justify-between'>
       <div>
         <div class='flex items-end space-x-4 mb-1'>
-          <h2 class='text-4xl'>{title}</h2>
-          <!-- <div>{extractBaseDomain(url)}</div> -->
-          
+          <h2 class='text-4xl text-white font-semibold'>{title}</h2>
         </div>
 
         <div>

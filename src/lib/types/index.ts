@@ -1,4 +1,5 @@
 interface BookmarkInfo {
+  id: number,
   title: string,
   url: string,
 }

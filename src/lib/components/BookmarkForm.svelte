@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { ActionData } from "./$types";
+  import type { ActionData } from './$types'
   export let form: ActionData
   export let title = ""
   export let url = ""
@@ -29,5 +29,8 @@
     />
   </div>
 
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <div class="w-full mt-2">
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a href="/" class="btn text-white bg-red-600">Cancel</a>
+  </div>
 </div>

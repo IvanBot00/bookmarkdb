@@ -1,14 +1,15 @@
 <script lang="ts">
   import { enhance } from "$app/forms";
   import type { ActionData } from './$types'
+  import BookmarkForm from "$lib/components/BookmarkForm.svelte";
 
   export let form: ActionData
 </script>
 
 <div class="w-full flex flex-col items-center mt-40">
   <form method="POST" use:enhance class="flex flex-col gap-4 w-full max-w-md mx-2">
-
-    <div class="form-group">
+    <BookmarkForm {form} />
+    <!-- <div class="form-group">
       <label for="title">Title</label>
       <input id="title" name="title" class="input" type="text" placeholder="Title" />
       {#if form?.missingTitle}<div>Please add a title</div>{/if}
@@ -36,7 +37,7 @@
       <label for="tags">Tags</label>
     </div>
 
-    <button type="submit" class="btn btn-primary">Add Bookmark</button>
+    <button type="submit" class="btn btn-primary">Add Bookmark</button> -->
 
   </form>
 </div>
