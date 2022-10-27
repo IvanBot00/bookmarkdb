@@ -2,7 +2,7 @@
   let isOpen = false
 </script>
 
-<div class={`bg-zinc-800 h-full text-white ${isOpen ? "block" : "hidden"} absolute sm:static sm:block`}>
+<div class={`bg-zinc-800 h-full text-white ${isOpen ? "block" : "hidden"} absolute sm:static sm:block w-72`}>
   <ul class='flex flex-col justify-center gap-2 mx-1'>
     <li class=''>
       <a href='/' class='flex space-x-2 w-full justify-center items-center '>

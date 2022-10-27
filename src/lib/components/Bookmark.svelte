@@ -19,7 +19,7 @@
 
 </script>
 
-<div class='bg-zinc-800 rounded-md p-2 text-gray-300'>
+<div class='bg-zinc-800 rounded-md p-2 text-gray-300 w-full max-w-4xl'>
   {#if mode === 'Row'}
     <div class='flex justify-between'>
       <div>

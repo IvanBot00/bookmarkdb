@@ -33,20 +33,18 @@
 
   <!-- Search / toolbar -->
   <div class='w-full py-1 flex justify-center'>
-    <div class='container flex justify-center'>
+    <div class='container flex justify-center px-4 py-2'>
       <input bind:value={input} class="input max-w-md" type="text" placeholder="Search titles..."/>
     </div>
   </div>
 
   <!-- Bookmarks list -->
   <div class='container w-11/12'>
-    <ul class='w-full grid gap-3 mt-3'>
+    <div class='w-full flex flex-col items-center gap-3 mt-3'>
       {#each displayedBookmarks as link}
-        <li>
-          <Bookmark on:delete={deleteBookmark} id={link.id} title={link.title} url={link.url} />
-        </li>
+        <Bookmark on:delete={deleteBookmark} id={link.id} title={link.title} url={link.url} />
       {/each}
-    </ul>
+    </div>
   </div>
 
 </div>
